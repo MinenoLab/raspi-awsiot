@@ -115,7 +115,7 @@ try:
         data = {
             "temperature" : t.getTemp(0)
         }
-        myAWSIoTMQTTClient.publish(topic, json.dumps(data), 1)
+        myAWSIoTMQTTClient.publish(tempt, json.dumps(data), 1)
         print("send:{}".format(data))
         loopCount += 1
 except KeyboardInterrupt:
