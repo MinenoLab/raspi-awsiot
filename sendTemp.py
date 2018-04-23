@@ -20,8 +20,7 @@ import logging
 import time
 import argparse
 import json
-import tmp36
-import RPi.GPIO as GPIO
+import Adafruit_DHT as dht
 
 # Read in command-line parameters
 parser = argparse.ArgumentParser()
@@ -83,17 +82,13 @@ time.sleep(2)
 
 # Publish to the same topic in a loop forever
 loopCount = 0
-try:
-    while True:
-        time.sleep(5)
-        t = tmp36.tmp36()
-        #myAWSIoTMQTTClient.publish(topic, "New Message " + str(loopCount), 1)
-        data = {
-            "temperature" : t.getTemp(0)
-        }
-        myAWSIoTMQTTClient.publish(topic, json.dumps(data), 1)
-        print("send:{}".format(data))
-        loopCount += 1
-except KeyboardInterrupt:
-    GPIO.cleanup()
-    
+while True:
+    time.sleep(5)
+    h,t = dht.read_retry(dht.AM2302,4)
+    data = {
+        "temperature":t,
+        "humidity":h
+    }
+    myAWSIoTMQTTClient.publish(topic, json.dumps(data), 1)
+    print("send:{}".format(data))
+    loopCount += 1
