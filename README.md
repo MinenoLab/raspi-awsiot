@@ -9,6 +9,6 @@ Raspberry PiからAWS IoTを利用するサンプルプログラムです。
 * tmp36.py
     * raspiberry piから温度センサーTMP36を使用するライブラリです。
 * sendTemp_tmp36.py
-    * sendTemp.pyをTMP36で実装したものです。
+    * sendTemp.pyをTMP36で実装したものです。
 * ControlValve_tmp36.py
-    * ControlValve.pyをTMP36で実装したものです。
+    * ControlValve.pyをTMP36で実装したものです。
