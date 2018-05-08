@@ -20,11 +20,10 @@ import logging
 import time
 import argparse
 import json
-import tmp36
 import RPi.GPIO as GPIO
 import Adafruit_DHT as dht
 
-PIN = 7
+PIN = 11
 def valveOpen(client, userdata, message):
 
     if not GPIO.input(PIN):
